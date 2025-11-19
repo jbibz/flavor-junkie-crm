@@ -25,9 +25,9 @@ const MetricCard = ({
   };
 
 return (
-    <Card className={`p-4 ${className}`}>
+<Card className={`p-3 ${className}`}>
       <div className="flex items-start gap-3">
-        <div className="flex-1 min-w-0 space-y-1">
+<div className="flex-1 min-w-0 space-y-0.5">
           <p className="text-sm text-gray-600 font-medium text-center">{title}</p>
           <p className="text-xl font-bold text-gray-900 text-center break-words">
             {prefix}{value}{suffix}
