@@ -189,14 +189,27 @@ const Dashboard = () => {
               View All
             </Button>
           </div>
-          <div className="flex justify-center">
-            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 w-64 h-80 flex flex-col items-center justify-between">
-              <h3 className="text-lg font-bold text-gray-900 text-center">BBQ Blend</h3>
-              <div className="text-6xl font-bold text-gray-900">56</div>
-              <div className="bg-green-100 text-gray-900 px-4 py-2 rounded-full text-sm font-medium">
-                in stock
+<div className="grid grid-cols-2 lg:grid-cols-6 gap-6">
+            {products.map((product) => (
+              <div key={product.Id} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col items-center justify-between min-h-[280px]">
+                <h3 className="text-base font-bold text-gray-900 text-center mb-4">{product.name}</h3>
+                <div className="text-5xl font-bold text-gray-900 mb-4">{product.currentStock}</div>
+                <div className={`px-4 py-2 rounded-full text-sm font-medium ${
+                  product.currentStock <= 10 
+                    ? 'bg-red-100 text-red-800' 
+                    : product.currentStock <= 20 
+                      ? 'bg-yellow-100 text-yellow-800' 
+                      : 'bg-green-100 text-green-800'
+                }`}>
+                  {product.currentStock <= 10 
+                    ? 'low stock' 
+                    : product.currentStock <= 20 
+                      ? 'medium stock' 
+                      : 'in stock'
+                  }
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
 
