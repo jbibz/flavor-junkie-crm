@@ -261,57 +261,94 @@ const Inventory = () => {
                     className="w-5 h-5 text-gray-500"
                   />
                 </div>
-                {!collapsedSections[type] && (
-                  <div className="overflow-x-auto">
-                    <table className="min-w-full divide-y divide-gray-200">
-                      <thead className="bg-gray-50">
-                        <tr>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Component
-                          </th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Quantity
-                          </th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Reorder Level
-                          </th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Cost per Unit
-                          </th>
-                          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            Status
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody className="bg-white divide-y divide-gray-200">
-                        {typeComponents.map((component) => (
-                          <tr key={component.Id} className="hover:bg-gray-50">
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <div className="font-medium text-gray-900">{component.name}</div>
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <Input
-                                type="number"
-                                value={component.quantity}
-                                onChange={(e) => handleStockUpdate(component.Id, e.target.value, "component")}
-                                className="w-20"
-                                min="0"
-                              />
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-gray-900">
-                              {component.reorderLevel}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-gray-900">
-                              ${component.costPerUnit?.toFixed(2)}
-                            </td>
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <StockBadge stock={component.quantity} reorderLevel={component.reorderLevel} />
-                            </td>
+{!collapsedSections[type] && (
+                  <>
+                    {/* Mobile Grid View */}
+                    <div className="grid grid-cols-2 gap-4 p-4 md:hidden">
+                      {typeComponents.map((component) => (
+                        <div key={component.Id} className="bg-white border border-gray-200 rounded-lg p-4 space-y-3">
+                          <div className="font-medium text-gray-900 text-sm leading-tight">{component.name}</div>
+                          
+                          <div className="space-y-2">
+                            <div className="text-xs text-gray-500">Quantity</div>
+                            <Input
+                              type="number"
+                              value={component.quantity}
+                              onChange={(e) => handleStockUpdate(component.Id, e.target.value, "component")}
+                              className="w-full h-8 text-sm"
+                              min="0"
+                            />
+                          </div>
+                          
+                          <div className="space-y-1">
+                            <div className="text-xs text-gray-500">Reorder Level</div>
+                            <div className="text-sm text-gray-900">{component.reorderLevel}</div>
+                          </div>
+                          
+                          <div className="space-y-1">
+                            <div className="text-xs text-gray-500">Cost per Unit</div>
+                            <div className="text-sm text-gray-900">${component.costPerUnit?.toFixed(2)}</div>
+                          </div>
+                          
+                          <div className="pt-1">
+                            <StockBadge stock={component.quantity} reorderLevel={component.reorderLevel} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* Desktop Table View */}
+                    <div className="overflow-x-auto hidden md:block">
+                      <table className="min-w-full divide-y divide-gray-200">
+                        <thead className="bg-gray-50">
+                          <tr>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              Component
+                            </th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              Quantity
+                            </th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              Reorder Level
+                            </th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              Cost per Unit
+                            </th>
+                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                              Status
+                            </th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+                        </thead>
+                        <tbody className="bg-white divide-y divide-gray-200">
+                          {typeComponents.map((component) => (
+                            <tr key={component.Id} className="hover:bg-gray-50">
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <div className="font-medium text-gray-900">{component.name}</div>
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <Input
+                                  type="number"
+                                  value={component.quantity}
+                                  onChange={(e) => handleStockUpdate(component.Id, e.target.value, "component")}
+                                  className="w-20"
+                                  min="0"
+                                />
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                {component.reorderLevel}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                                ${component.costPerUnit?.toFixed(2)}
+                              </td>
+                              <td className="px-6 py-4 whitespace-nowrap">
+                                <StockBadge stock={component.quantity} reorderLevel={component.reorderLevel} />
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
                 )}
               </Card>
             ))
