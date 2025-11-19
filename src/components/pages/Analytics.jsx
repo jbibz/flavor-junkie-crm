@@ -232,9 +232,9 @@ const Analytics = () => {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
+<div className="flex flex-col space-y-4 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
+        <div className="text-center sm:text-left">
+          <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
             Sales Analytics
           </h1>
           <p className="mt-2 text-gray-600">
@@ -243,13 +243,14 @@ const Analytics = () => {
         </div>
         
         {/* Date Range Filter */}
-        <div className="mt-4 sm:mt-0 flex space-x-2">
+        <div className="flex flex-wrap justify-center sm:justify-end gap-2">
           {Object.entries(dateRanges).map(([key, range]) => (
             <Button
               key={key}
               variant={dateRange === key ? "primary" : "ghost"}
               size="sm"
               onClick={() => setDateRange(key)}
+              className="min-w-0 flex-shrink-0"
             >
               {range.label}
             </Button>
@@ -258,49 +259,53 @@ const Analytics = () => {
       </div>
 
       {/* Metrics Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <MetricCard
           title="Total Revenue"
           value={metrics.revenue.toLocaleString()}
           prefix="$"
           icon="DollarSign"
+          className="text-center sm:text-left"
         />
         <MetricCard
           title="Total Sales"
           value={metrics.sales.toLocaleString()}
           icon="ShoppingCart"
+          className="text-center sm:text-left"
         />
         <MetricCard
           title="Avg Order Value"
           value={metrics.avgOrder.toFixed(0)}
           prefix="$"
           icon="TrendingUp"
+          className="text-center sm:text-left"
         />
         <MetricCard
           title="Top Product"
           value={metrics.topProduct}
           icon="Award"
+          className="text-center sm:text-left"
         />
       </div>
 
       {/* Charts */}
-      <div className="grid lg:grid-cols-2 gap-6">
+<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Revenue Trend */}
-        <Card className="p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+        <Card className="p-4 sm:p-6">
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 text-center sm:text-left">
             Revenue Trend - {dateRanges[dateRange].label}
           </h2>
           <Chart
             options={revenueChart.options}
             series={revenueChart.series}
             type="area"
-            height={350}
+            height={300}
           />
         </Card>
 
         {/* Product Performance */}
-        <Card className="p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+        <Card className="p-4 sm:p-6">
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 text-center sm:text-left">
             Product Performance - {dateRanges[dateRange].label}
           </h2>
           {productChart.series[0].data.length > 0 ? (
@@ -308,79 +313,78 @@ const Analytics = () => {
               options={productChart.options}
               series={productChart.series}
               type="bar"
-              height={350}
+              height={300}
             />
           ) : (
-            <div className="flex items-center justify-center h-80 text-gray-500">
-              <div className="text-center">
-                <p>No sales data for selected period</p>
-                <p className="text-sm mt-1">Try selecting a different date range</p>
+            <div className="flex items-center justify-center h-64 sm:h-80 text-gray-500">
+              <div className="text-center px-4">
+                <p className="text-sm sm:text-base">No sales data for selected period</p>
+                <p className="text-xs sm:text-sm mt-1">Try selecting a different date range</p>
               </div>
             </div>
           )}
         </Card>
       </div>
-
-      {/* Additional Insights */}
-      <div className="grid lg:grid-cols-3 gap-6">
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Sales Summary</h3>
+{/* Additional Insights */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Card className="p-4 sm:p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center sm:text-left">Sales Summary</h3>
           <div className="space-y-3">
-            <div className="flex justify-between">
-              <span className="text-gray-600">Total Orders:</span>
-              <span className="font-medium text-gray-900">{metrics.sales}</span>
+            <div className="flex justify-between items-center">
+              <span className="text-gray-600 text-sm sm:text-base">Total Orders:</span>
+              <span className="font-medium text-gray-900 text-sm sm:text-base">{metrics.sales}</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-gray-600">Total Revenue:</span>
-              <span className="font-medium text-gray-900">${metrics.revenue.toFixed(2)}</span>
+            <div className="flex justify-between items-center">
+              <span className="text-gray-600 text-sm sm:text-base">Total Revenue:</span>
+              <span className="font-medium text-gray-900 text-sm sm:text-base">${metrics.revenue.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-gray-600">Average Order:</span>
-              <span className="font-medium text-gray-900">${metrics.avgOrder.toFixed(2)}</span>
+            <div className="flex justify-between items-center">
+              <span className="text-gray-600 text-sm sm:text-base">Average Order:</span>
+              <span className="font-medium text-gray-900 text-sm sm:text-base">${metrics.avgOrder.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between pt-2 border-t border-gray-200">
-              <span className="text-gray-600">Best Seller:</span>
-              <span className="font-medium text-amber-600">{metrics.topProduct}</span>
+            <div className="flex justify-between items-center pt-2 border-t border-gray-200">
+              <span className="text-gray-600 text-sm sm:text-base">Best Seller:</span>
+              <span className="font-medium text-amber-600 text-sm sm:text-base truncate ml-2">{metrics.topProduct}</span>
             </div>
           </div>
         </Card>
 
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Stats</h3>
-          <div className="space-y-3">
-            <div className="text-center p-3 bg-green-50 rounded-lg">
-              <div className="text-2xl font-bold text-green-600">
+        <Card className="p-4 sm:p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center sm:text-left">Quick Stats</h3>
+          <div className="space-y-4">
+            <div className="text-center p-4 bg-green-50 rounded-lg">
+              <div className="text-xl sm:text-2xl font-bold text-green-600">
                 {filteredSales.reduce((sum, sale) => sum + sale.quantity, 0)}
               </div>
-              <div className="text-sm text-green-700">Units Sold</div>
+              <div className="text-sm text-green-700 mt-1">Units Sold</div>
             </div>
-            <div className="text-center p-3 bg-blue-50 rounded-lg">
-              <div className="text-2xl font-bold text-blue-600">
+            <div className="text-center p-4 bg-blue-50 rounded-lg">
+              <div className="text-xl sm:text-2xl font-bold text-blue-600">
                 {new Set(filteredSales.map(sale => sale.productId)).size}
               </div>
-              <div className="text-sm text-blue-700">Products Sold</div>
+              <div className="text-sm text-blue-700 mt-1">Products Sold</div>
             </div>
           </div>
         </Card>
 
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Growth Insights</h3>
+        <Card className="p-4 sm:p-6 md:col-span-2 lg:col-span-1">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 text-center sm:text-left">Growth Insights</h3>
           <div className="space-y-4">
             <div className="p-3 bg-amber-50 rounded-lg">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
-                <div className="text-sm text-amber-700">
+              <div className="flex items-start space-x-3">
+                <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                <div className="text-sm text-amber-700 min-w-0">
                   <p className="font-medium">Peak Performance</p>
-                  <p>{metrics.topProduct} is your best seller</p>
+                  <p className="break-words">{metrics.topProduct} is your best seller</p>
                 </div>
               </div>
             </div>
             <div className="p-3 bg-gray-50 rounded-lg">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-gray-500 rounded-full"></div>
-                <div className="text-sm text-gray-700">
+              <div className="flex items-start space-x-3">
+                <div className="w-2 h-2 bg-gray-500 rounded-full mt-2 flex-shrink-0"></div>
+                <div className="text-sm text-gray-700 min-w-0">
                   <p className="font-medium">Opportunity</p>
-                  <p>Consider promoting lower-performing products</p>
+                  <p className="break-words">Consider promoting lower-performing products</p>
                 </div>
               </div>
             </div>
