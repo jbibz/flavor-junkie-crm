@@ -1,0 +1,122 @@
+[
+  {
+    "Id": 1,
+    "date": "2024-12-10T00:00:00.000Z",
+    "productId": 1,
+    "quantity": 5,
+    "unitPrice": 8.99,
+    "totalRevenue": 44.95
+  },
+  {
+    "Id": 2,
+    "date": "2024-12-10T00:00:00.000Z",
+    "productId": 7,
+    "quantity": 3,
+    "unitPrice": 10.99,
+    "totalRevenue": 32.97
+  },
+  {
+    "Id": 3,
+    "date": "2024-12-09T00:00:00.000Z",
+    "productId": 2,
+    "quantity": 2,
+    "unitPrice": 9.99,
+    "totalRevenue": 19.98
+  },
+  {
+    "Id": 4,
+    "date": "2024-12-09T00:00:00.000Z",
+    "productId": 4,
+    "quantity": 4,
+    "unitPrice": 10.49,
+    "totalRevenue": 41.96
+  },
+  {
+    "Id": 5,
+    "date": "2024-12-08T00:00:00.000Z",
+    "productId": 6,
+    "quantity": 2,
+    "unitPrice": 13.99,
+    "totalRevenue": 27.98
+  },
+  {
+    "Id": 6,
+    "date": "2024-12-08T00:00:00.000Z",
+    "productId": 1,
+    "quantity": 6,
+    "unitPrice": 8.99,
+    "totalRevenue": 53.94
+  },
+  {
+    "Id": 7,
+    "date": "2024-12-07T00:00:00.000Z",
+    "productId": 5,
+    "quantity": 1,
+    "unitPrice": 12.49,
+    "totalRevenue": 12.49
+  },
+  {
+    "Id": 8,
+    "date": "2024-12-07T00:00:00.000Z",
+    "productId": 3,
+    "quantity": 3,
+    "unitPrice": 11.99,
+    "totalRevenue": 35.97
+  },
+  {
+    "Id": 9,
+    "date": "2024-12-06T00:00:00.000Z",
+    "productId": 2,
+    "quantity": 4,
+    "unitPrice": 9.99,
+    "totalRevenue": 39.96
+  },
+  {
+    "Id": 10,
+    "date": "2024-12-06T00:00:00.000Z",
+    "productId": 7,
+    "quantity": 2,
+    "unitPrice": 10.99,
+    "totalRevenue": 21.98
+  },
+  {
+    "Id": 11,
+    "date": "2024-12-05T00:00:00.000Z",
+    "productId": 4,
+    "quantity": 3,
+    "unitPrice": 10.49,
+    "totalRevenue": 31.47
+  },
+  {
+    "Id": 12,
+    "date": "2024-12-05T00:00:00.000Z",
+    "productId": 1,
+    "quantity": 8,
+    "unitPrice": 8.99,
+    "totalRevenue": 71.92
+  },
+  {
+    "Id": 13,
+    "date": "2024-12-04T00:00:00.000Z",
+    "productId": 6,
+    "quantity": 1,
+    "unitPrice": 13.99,
+    "totalRevenue": 13.99
+  },
+  {
+    "Id": 14,
+    "date": "2024-12-03T00:00:00.000Z",
+    "productId": 5,
+    "quantity": 2,
+    "unitPrice": 12.49,
+    "totalRevenue": 24.98
+  },
+  {
+    "Id": 15,
+    "date": "2024-12-02T00:00:00.000Z",
+    "productId": 2,
+    "quantity": 5,
+    "unitPrice": 9.99,
+    "totalRevenue": 49.95
+  }
+]

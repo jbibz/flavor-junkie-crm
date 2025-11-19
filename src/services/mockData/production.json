@@ -1,0 +1,66 @@
+[
+  {
+    "Id": 1,
+    "productId": 1,
+    "date": "2024-12-08T00:00:00.000Z",
+    "quantity": 50,
+    "totalCost": 142.50,
+    "notes": "Standard batch production for BBQ Blend"
+  },
+  {
+    "Id": 2,
+    "productId": 2,
+    "date": "2024-12-07T00:00:00.000Z",
+    "quantity": 40,
+    "totalCost": 130.00,
+    "notes": "Regular production run for Garlic Supreme"
+  },
+  {
+    "Id": 3,
+    "productId": 7,
+    "date": "2024-12-06T00:00:00.000Z",
+    "quantity": 48,
+    "totalCost": 175.20,
+    "notes": "Full batch of Lemon Pepper seasoning"
+  },
+  {
+    "Id": 4,
+    "productId": 4,
+    "date": "2024-12-05T00:00:00.000Z",
+    "quantity": 45,
+    "totalCost": 155.25,
+    "notes": "Cajun Spice production - added extra heat"
+  },
+  {
+    "Id": 5,
+    "productId": 6,
+    "date": "2024-12-04T00:00:00.000Z",
+    "quantity": 42,
+    "totalCost": 178.50,
+    "notes": "Smoky Chipotle blend - premium batch"
+  },
+  {
+    "Id": 6,
+    "productId": 3,
+    "date": "2024-12-03T00:00:00.000Z",
+    "quantity": 35,
+    "totalCost": 145.25,
+    "notes": "Italian Herb Mix - fresh herbs used"
+  },
+  {
+    "Id": 7,
+    "productId": 5,
+    "date": "2024-12-02T00:00:00.000Z",
+    "quantity": 38,
+    "totalCost": 146.30,
+    "notes": "Mediterranean Mix with extra lemon zest"
+  },
+  {
+    "Id": 8,
+    "productId": 1,
+    "date": "2024-11-30T00:00:00.000Z",
+    "quantity": 50,
+    "totalCost": 142.50,
+    "notes": "Weekend production batch"
+  }
+]

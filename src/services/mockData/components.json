@@ -1,0 +1,106 @@
+[
+  {
+    "Id": 1,
+    "type": "lid",
+    "name": "Small Jar Lid (58mm)",
+    "quantity": 250,
+    "reorderLevel": 50,
+    "costPerUnit": 0.35
+  },
+  {
+    "Id": 2,
+    "type": "lid",
+    "name": "Medium Jar Lid (70mm)",
+    "quantity": 180,
+    "reorderLevel": 40,
+    "costPerUnit": 0.45
+  },
+  {
+    "Id": 3,
+    "type": "lid",
+    "name": "Large Jar Lid (86mm)",
+    "quantity": 120,
+    "reorderLevel": 30,
+    "costPerUnit": 0.55
+  },
+  {
+    "Id": 4,
+    "type": "bottle",
+    "name": "Small Glass Jar (4oz)",
+    "quantity": 300,
+    "reorderLevel": 60,
+    "costPerUnit": 0.85
+  },
+  {
+    "Id": 5,
+    "type": "bottle",
+    "name": "Medium Glass Jar (8oz)",
+    "quantity": 200,
+    "reorderLevel": 50,
+    "costPerUnit": 1.25
+  },
+  {
+    "Id": 6,
+    "type": "bottle",
+    "name": "Large Glass Jar (16oz)",
+    "quantity": 150,
+    "reorderLevel": 40,
+    "costPerUnit": 1.85
+  },
+  {
+    "Id": 7,
+    "type": "label",
+    "name": "BBQ Blend Label",
+    "quantity": 45,
+    "reorderLevel": 20,
+    "costPerUnit": 0.15
+  },
+  {
+    "Id": 8,
+    "type": "label",
+    "name": "Garlic Supreme Label",
+    "quantity": 32,
+    "reorderLevel": 20,
+    "costPerUnit": 0.15
+  },
+  {
+    "Id": 9,
+    "type": "label",
+    "name": "Italian Herb Mix Label",
+    "quantity": 8,
+    "reorderLevel": 20,
+    "costPerUnit": 0.15
+  },
+  {
+    "Id": 10,
+    "type": "label",
+    "name": "Cajun Spice Label",
+    "quantity": 28,
+    "reorderLevel": 20,
+    "costPerUnit": 0.15
+  },
+  {
+    "Id": 11,
+    "type": "label",
+    "name": "Mediterranean Mix Label",
+    "quantity": 18,
+    "reorderLevel": 20,
+    "costPerUnit": 0.15
+  },
+  {
+    "Id": 12,
+    "type": "label",
+    "name": "Smoky Chipotle Label",
+    "quantity": 24,
+    "reorderLevel": 20,
+    "costPerUnit": 0.15
+  },
+  {
+    "Id": 13,
+    "type": "label",
+    "name": "Lemon Pepper Label",
+    "quantity": 36,
+    "reorderLevel": 20,
+    "costPerUnit": 0.15
+  }
+]

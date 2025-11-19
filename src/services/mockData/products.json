@@ -1,0 +1,222 @@
+[
+  {
+    "Id": 1,
+    "name": "BBQ Blend",
+    "currentStock": 45,
+    "recipe": [
+      {
+        "ingredient": "Paprika",
+        "gramsPerBatch": 120,
+        "costPerGram": 0.015
+      },
+      {
+        "ingredient": "Brown Sugar",
+        "gramsPerBatch": 80,
+        "costPerGram": 0.008
+      },
+      {
+        "ingredient": "Salt",
+        "gramsPerBatch": 60,
+        "costPerGram": 0.002
+      },
+      {
+        "ingredient": "Black Pepper",
+        "gramsPerBatch": 40,
+        "costPerGram": 0.025
+      },
+      {
+        "ingredient": "Garlic Powder",
+        "gramsPerBatch": 30,
+        "costPerGram": 0.018
+      }
+    ],
+    "batchSize": 50,
+    "costPerUnit": 2.85,
+    "pricePerUnit": 8.99
+  },
+  {
+    "Id": 2,
+    "name": "Garlic Supreme",
+    "currentStock": 32,
+    "recipe": [
+      {
+        "ingredient": "Garlic Powder",
+        "gramsPerBatch": 150,
+        "costPerGram": 0.018
+      },
+      {
+        "ingredient": "Onion Powder",
+        "gramsPerBatch": 100,
+        "costPerGram": 0.012
+      },
+      {
+        "ingredient": "Salt",
+        "gramsPerBatch": 80,
+        "costPerGram": 0.002
+      },
+      {
+        "ingredient": "Herbs de Provence",
+        "gramsPerBatch": 50,
+        "costPerGram": 0.035
+      }
+    ],
+    "batchSize": 40,
+    "costPerUnit": 3.25,
+    "pricePerUnit": 9.99
+  },
+  {
+    "Id": 3,
+    "name": "Italian Herb Mix",
+    "currentStock": 8,
+    "recipe": [
+      {
+        "ingredient": "Basil",
+        "gramsPerBatch": 100,
+        "costPerGram": 0.028
+      },
+      {
+        "ingredient": "Oregano",
+        "gramsPerBatch": 80,
+        "costPerGram": 0.022
+      },
+      {
+        "ingredient": "Thyme",
+        "gramsPerBatch": 60,
+        "costPerGram": 0.032
+      },
+      {
+        "ingredient": "Rosemary",
+        "gramsPerBatch": 40,
+        "costPerGram": 0.038
+      }
+    ],
+    "batchSize": 35,
+    "costPerUnit": 4.15,
+    "pricePerUnit": 11.99
+  },
+  {
+    "Id": 4,
+    "name": "Cajun Spice",
+    "currentStock": 28,
+    "recipe": [
+      {
+        "ingredient": "Cayenne Pepper",
+        "gramsPerBatch": 80,
+        "costPerGram": 0.045
+      },
+      {
+        "ingredient": "Paprika",
+        "gramsPerBatch": 120,
+        "costPerGram": 0.015
+      },
+      {
+        "ingredient": "Garlic Powder",
+        "gramsPerBatch": 70,
+        "costPerGram": 0.018
+      },
+      {
+        "ingredient": "Onion Powder",
+        "gramsPerBatch": 60,
+        "costPerGram": 0.012
+      },
+      {
+        "ingredient": "Salt",
+        "gramsPerBatch": 50,
+        "costPerGram": 0.002
+      }
+    ],
+    "batchSize": 45,
+    "costPerUnit": 3.45,
+    "pricePerUnit": 10.49
+  },
+  {
+    "Id": 5,
+    "name": "Mediterranean Mix",
+    "currentStock": 18,
+    "recipe": [
+      {
+        "ingredient": "Sea Salt",
+        "gramsPerBatch": 100,
+        "costPerGram": 0.008
+      },
+      {
+        "ingredient": "Lemon Zest",
+        "gramsPerBatch": 60,
+        "costPerGram": 0.055
+      },
+      {
+        "ingredient": "Oregano",
+        "gramsPerBatch": 80,
+        "costPerGram": 0.022
+      },
+      {
+        "ingredient": "Basil",
+        "gramsPerBatch": 70,
+        "costPerGram": 0.028
+      }
+    ],
+    "batchSize": 38,
+    "costPerUnit": 3.85,
+    "pricePerUnit": 12.49
+  },
+  {
+    "Id": 6,
+    "name": "Smoky Chipotle",
+    "currentStock": 24,
+    "recipe": [
+      {
+        "ingredient": "Chipotle Powder",
+        "gramsPerBatch": 90,
+        "costPerGram": 0.065
+      },
+      {
+        "ingredient": "Smoked Paprika",
+        "gramsPerBatch": 100,
+        "costPerGram": 0.035
+      },
+      {
+        "ingredient": "Cumin",
+        "gramsPerBatch": 50,
+        "costPerGram": 0.028
+      },
+      {
+        "ingredient": "Salt",
+        "gramsPerBatch": 40,
+        "costPerGram": 0.002
+      }
+    ],
+    "batchSize": 42,
+    "costPerUnit": 4.25,
+    "pricePerUnit": 13.99
+  },
+  {
+    "Id": 7,
+    "name": "Lemon Pepper",
+    "currentStock": 36,
+    "recipe": [
+      {
+        "ingredient": "Black Pepper",
+        "gramsPerBatch": 120,
+        "costPerGram": 0.025
+      },
+      {
+        "ingredient": "Lemon Zest",
+        "gramsPerBatch": 100,
+        "costPerGram": 0.055
+      },
+      {
+        "ingredient": "Salt",
+        "gramsPerBatch": 80,
+        "costPerGram": 0.002
+      },
+      {
+        "ingredient": "Garlic Powder",
+        "gramsPerBatch": 30,
+        "costPerGram": 0.018
+      }
+    ],
+    "batchSize": 48,
+    "costPerUnit": 3.65,
+    "pricePerUnit": 10.99
+  }
+]

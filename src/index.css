@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import 'react-toastify/dist/ReactToastify.css';
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #F9FAFB;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Toast customization */
+.Toastify__toast-container {
+  z-index: 9999 !important;
+  top: 20px !important;
+  right: 20px !important;
+  width: 320px !important;
+}
+
+.Toastify__toast {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  font-size: 14px !important;
+  font-family: 'Inter', sans-serif !important;
+  min-height: 60px !important;
+}
+
+.Toastify__toast--success {
+  background: #10B981 !important;
+}
+
+.Toastify__toast--warning {
+  background: #F59E0B !important;
+}
+
+.Toastify__toast--error {
+  background: #EF4444 !important;
+}
+
+.Toastify__toast--info {
+  background: #3B82F6 !important;
+}
