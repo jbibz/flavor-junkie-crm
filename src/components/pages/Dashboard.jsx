@@ -189,12 +189,12 @@ const Dashboard = () => {
               View All
             </Button>
           </div>
-<div className="grid grid-cols-2 lg:grid-cols-6 gap-6">
+<div className="grid grid-cols-4 gap-3 md:gap-6">
             {products.map((product) => (
-              <div key={product.Id} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex flex-col items-center justify-between min-h-[280px]">
-                <h3 className="text-base font-bold text-gray-900 text-center mb-4">{product.name}</h3>
-                <div className="text-5xl font-bold text-gray-900 mb-4">{product.currentStock}</div>
-                <div className={`px-4 py-2 rounded-full text-sm font-medium ${
+              <div key={product.Id} className="bg-white rounded-2xl p-3 md:p-6 shadow-sm border border-gray-100 flex flex-col items-center justify-between min-h-[200px] md:min-h-[280px]">
+                <h3 className="text-sm md:text-base font-bold text-gray-900 text-center mb-2 md:mb-4">{product.name}</h3>
+                <div className="text-3xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4">{product.currentStock}</div>
+                <div className={`px-2 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm font-medium ${
                   product.currentStock <= 10 
                     ? 'bg-red-100 text-red-800' 
                     : product.currentStock <= 20 
