@@ -65,7 +65,13 @@ body {
 .Toastify__toast--error {
   background: #EF4444 !important;
 }
-
 .Toastify__toast--info {
   background: #3B82F6 !important;
+}
+
+/* Bottom navigation safe area support for iOS */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .h-safe-area-inset-bottom {
+    height: env(safe-area-inset-bottom);
+  }
 }

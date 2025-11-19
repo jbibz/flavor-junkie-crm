@@ -1,14 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import ApperIcon from "@/components/ApperIcon";
 
-const MobileMenu = ({ isOpen, onClose }) => {
+const BottomNavigation = () => {
   const location = useLocation();
 
   const navigation = [
-    { name: "Dashboard", href: "/", icon: "LayoutDashboard" },
     { name: "Inventory", href: "/inventory", icon: "Package" },
     { name: "Sales", href: "/sales", icon: "ShoppingCart" },
+    { name: "Dashboard", href: "/", icon: "LayoutDashboard", isCenter: true },
     { name: "Analytics", href: "/analytics", icon: "BarChart3" },
     { name: "Production", href: "/production", icon: "Factory" },
   ];
@@ -18,81 +18,75 @@ const MobileMenu = ({ isOpen, onClose }) => {
     return location.pathname.startsWith(href);
   };
 
-  const handleLinkClick = () => {
-    onClose();
-  };
-
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
-            onClick={onClose}
-          />
+    <motion.nav
+      initial={{ y: 100 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", damping: 20, stiffness: 200 }}
+      className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 lg:hidden z-50"
+    >
+      <div className="flex items-center justify-around px-2 py-2">
+        {navigation.map((item) => {
+          const active = isActive(item.href);
           
-          {/* Menu Panel */}
-          <motion.div
-            initial={{ x: "-100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "-100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed top-0 left-0 h-full w-72 bg-white shadow-xl z-50 lg:hidden"
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-gradient-to-r from-amber-500 to-orange-500 rounded-lg flex items-center justify-center">
-                  <ApperIcon name="Zap" className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <h1 className="text-lg font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-                    Flavor Junkie
-                  </h1>
-                  <p className="text-xs text-gray-500 -mt-1">CRM System</p>
-                </div>
-              </div>
-              <button
-                onClick={onClose}
-                className="p-2 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-colors"
+          if (item.isCenter) {
+            return (
+              <Link
+                key={item.name}
+                to={item.href}
+                className="flex flex-col items-center justify-center relative -mt-6"
               >
-                <ApperIcon name="X" className="h-5 w-5" />
-              </button>
-            </div>
-
-            {/* Navigation */}
-            <nav className="p-4 space-y-2">
-              {navigation.map((item, index) => (
                 <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg border-4 border-white transition-all duration-200 ${
+                    active
+                      ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white"
+                      : "bg-gradient-to-r from-amber-500 to-orange-500 text-white"
+                  }`}
                 >
-                  <Link
-                    to={item.href}
-                    onClick={handleLinkClick}
-                    className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-                      isActive(item.href)
-                        ? "bg-gradient-to-r from-amber-50 to-orange-50 text-amber-700 border-l-4 border-amber-500"
-                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-                    }`}
-                  >
-                    <ApperIcon name={item.icon} className="h-5 w-5" />
-                    <span>{item.name}</span>
-                  </Link>
+                  <ApperIcon name={item.icon} className="h-7 w-7" />
                 </motion.div>
-              ))}
-            </nav>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+                <span className={`text-xs mt-1 font-medium transition-colors duration-200 ${
+                  active ? "text-amber-600" : "text-gray-600"
+                }`}>
+                  {item.name}
+                </span>
+              </Link>
+            );
+          }
+
+          return (
+            <Link
+              key={item.name}
+              to={item.href}
+              className="flex flex-col items-center justify-center min-w-0 flex-1 py-2 px-1"
+            >
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200 ${
+                  active
+                    ? "bg-gradient-to-r from-amber-50 to-orange-50 text-amber-600"
+                    : "text-gray-500 hover:text-gray-700 hover:bg-gray-50"
+                }`}
+              >
+                <ApperIcon name={item.icon} className="h-5 w-5" />
+              </motion.div>
+              <span className={`text-xs mt-1 font-medium transition-colors duration-200 truncate ${
+                active ? "text-amber-600" : "text-gray-600"
+              }`}>
+                {item.name}
+              </span>
+            </Link>
+          );
+        })}
+      </div>
+      
+      {/* Safe area padding for iOS devices */}
+      <div className="h-safe-area-inset-bottom bg-white"></div>
+    </motion.nav>
   );
 };
 
-export default MobileMenu;
+export default BottomNavigation;

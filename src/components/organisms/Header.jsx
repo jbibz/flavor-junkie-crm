@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import Button from "@/components/atoms/Button";
 import ApperIcon from "@/components/ApperIcon";
 
-const Header = ({ onMobileMenuToggle }) => {
+const Header = () => {
   const location = useLocation();
 
   const navigation = [
@@ -23,16 +23,9 @@ const Header = ({ onMobileMenuToggle }) => {
     <header className="bg-white border-b border-gray-200 sticky top-0 z-40 backdrop-blur-sm bg-white/95">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo and Mobile Menu */}
+          {/* Logo */}
           <div className="flex items-center">
-            <button
-              onClick={onMobileMenuToggle}
-              className="lg:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
-            >
-              <ApperIcon name="Menu" className="h-5 w-5" />
-            </button>
-            
-            <Link to="/" className="flex items-center space-x-3 ml-2 lg:ml-0">
+            <Link to="/" className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-gradient-to-r from-amber-500 to-orange-500 rounded-lg flex items-center justify-center">
                 <ApperIcon name="Zap" className="w-5 h-5 text-white" />
               </div>
