@@ -154,7 +154,7 @@ const Production = () => {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
             Production History
@@ -174,7 +174,7 @@ const Production = () => {
       </div>
 
       {/* Search */}
-      <div className="flex justify-between items-center">
+<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <SearchBar
           onSearch={setSearchTerm}
           placeholder="Search production history..."
@@ -194,13 +194,13 @@ const Production = () => {
           />
         ) : (
           <div className="divide-y divide-gray-200">
-            {filteredProduction.map((batch) => (
-              <div key={batch.Id} className="p-6">
-                <div className="flex items-center justify-between">
+{filteredProduction.map((batch) => (
+              <div key={batch.Id} className="p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center space-x-4">
                       <div>
-                        <h3 className="text-lg font-semibold text-gray-900">
+                        <h3 className="text-base sm:text-lg font-semibold text-gray-900">
                           {getProductName(batch.productId)}
                         </h3>
                         <p className="text-sm text-gray-600">
@@ -210,8 +210,8 @@ const Production = () => {
                     </div>
                   </div>
                   
-                  <div className="flex items-center space-x-4">
-                    <div className="text-right">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                    <div className="text-center sm:text-right">
                       <div className="text-lg font-semibold text-gray-900">
                         ${batch.totalCost?.toFixed(2)}
                       </div>
@@ -225,6 +225,7 @@ const Production = () => {
                       size="sm"
                       onClick={() => toggleBatchDetails(batch.Id)}
                       icon={expandedBatch === batch.Id ? "ChevronUp" : "ChevronDown"}
+                      className="min-h-[44px] w-full sm:w-auto"
                     >
                       Details
                     </Button>
@@ -234,32 +235,32 @@ const Production = () => {
                 {/* Expanded Details */}
                 {expandedBatch === batch.Id && (
                   <div className="mt-4 pt-4 border-t border-gray-200">
-                    <div className="grid md:grid-cols-2 gap-6">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="font-medium text-gray-900 mb-3">Batch Information</h4>
-                        <div className="space-y-2 text-sm">
-                          <div className="flex justify-between">
+                        <h4 className="font-medium text-gray-900 mb-4 text-base sm:text-lg">Batch Information</h4>
+                        <div className="space-y-3 text-sm sm:text-base">
+                          <div className="flex justify-between py-2">
                             <span className="text-gray-600">Production Date:</span>
-                            <span className="text-gray-900">{format(new Date(batch.date), "MMM d, yyyy")}</span>
+                            <span className="text-gray-900 font-medium">{format(new Date(batch.date), "MMM d, yyyy")}</span>
                           </div>
-                          <div className="flex justify-between">
+                          <div className="flex justify-between py-2">
                             <span className="text-gray-600">Quantity Produced:</span>
-                            <span className="text-gray-900">{batch.quantity} units</span>
+                            <span className="text-gray-900 font-medium">{batch.quantity} units</span>
                           </div>
-                          <div className="flex justify-between">
+                          <div className="flex justify-between py-2">
                             <span className="text-gray-600">Total Batch Cost:</span>
-                            <span className="text-gray-900">${batch.totalCost?.toFixed(2)}</span>
+                            <span className="text-gray-900 font-medium">${batch.totalCost?.toFixed(2)}</span>
                           </div>
-                          <div className="flex justify-between">
+                          <div className="flex justify-between py-2">
                             <span className="text-gray-600">Cost per Unit:</span>
-                            <span className="text-gray-900">${(batch.totalCost / batch.quantity).toFixed(2)}</span>
+                            <span className="text-gray-900 font-medium">${(batch.totalCost / batch.quantity).toFixed(2)}</span>
                           </div>
                         </div>
                       </div>
                       
                       <div>
-                        <h4 className="font-medium text-gray-900 mb-3">Production Notes</h4>
-                        <div className="text-sm text-gray-700 bg-gray-50 p-3 rounded-lg">
+                        <h4 className="font-medium text-gray-900 mb-4 text-base sm:text-lg">Production Notes</h4>
+                        <div className="text-sm sm:text-base text-gray-700 bg-gray-50 p-4 rounded-lg leading-relaxed">
                           {batch.notes || "No notes recorded for this batch"}
                         </div>
                       </div>

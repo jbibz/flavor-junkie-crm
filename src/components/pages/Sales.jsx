@@ -169,7 +169,7 @@ const Sales = () => {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
             Sales Tracking
@@ -189,7 +189,7 @@ const Sales = () => {
       </div>
 
       {/* Metrics Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <MetricCard
           title="Total Revenue"
           value={metrics.totalRevenue.toLocaleString()}
@@ -219,7 +219,7 @@ const Sales = () => {
       </div>
 
       {/* Main Content */}
-      <div className="grid lg:grid-cols-3 gap-6">
+<div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
         {/* Calendar */}
         <div className="lg:col-span-2">
           <CalendarView onDateSelect={handleDateSelect} />

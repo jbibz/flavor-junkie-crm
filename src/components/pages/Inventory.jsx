@@ -121,7 +121,7 @@ const Inventory = () => {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
             Inventory Management
@@ -138,11 +138,11 @@ const Inventory = () => {
       </div>
 
       {/* Search and Tabs */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-4 sm:space-y-0">
-        <div className="flex space-x-1 bg-gray-100 p-1 rounded-lg">
+<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="flex space-x-1 bg-gray-100 p-1 rounded-lg w-full sm:w-auto">
           <button
             onClick={() => setActiveTab("products")}
-            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            className={`px-4 py-3 sm:py-2 rounded-md text-sm font-medium transition-colors flex-1 sm:flex-none min-h-[44px] ${
               activeTab === "products"
                 ? "bg-white text-amber-700 shadow-sm"
                 : "text-gray-600 hover:text-gray-900"
@@ -152,7 +152,7 @@ const Inventory = () => {
           </button>
           <button
             onClick={() => setActiveTab("components")}
-            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            className={`px-4 py-3 sm:py-2 rounded-md text-sm font-medium transition-colors flex-1 sm:flex-none min-h-[44px] ${
               activeTab === "components"
                 ? "bg-white text-amber-700 shadow-sm"
                 : "text-gray-600 hover:text-gray-900"
@@ -171,7 +171,7 @@ const Inventory = () => {
 
       {/* Content */}
       {activeTab === "products" ? (
-        <Card className="overflow-hidden">
+<Card className="overflow-hidden">
           {filteredProducts.length === 0 ? (
             <Empty
               title="No products found"
@@ -183,19 +183,19 @@ const Inventory = () => {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Product
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Current Stock
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Status
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Unit Price
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                       Actions
                     </th>
                   </tr>
@@ -203,30 +203,31 @@ const Inventory = () => {
                 <tbody className="bg-white divide-y divide-gray-200">
                   {filteredProducts.map((product) => (
                     <tr key={product.Id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="font-medium text-gray-900">{product.name}</div>
+                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
+                        <div className="font-medium text-gray-900 text-sm sm:text-base">{product.name}</div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                         <Input
                           type="number"
                           value={product.currentStock}
                           onChange={(e) => handleStockUpdate(product.Id, e.target.value)}
-                          className="w-20"
+                          className="w-20 sm:w-24 min-h-[44px]"
                           min="0"
                         />
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                         <StockBadge stock={product.currentStock} />
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-gray-900 text-sm sm:text-base">
                         ${product.pricePerUnit?.toFixed(2)}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                         <Button
                           variant="ghost"
                           size="sm"
                           onClick={() => handleProductClick(product.Id)}
                           icon="Eye"
+                          className="min-h-[44px]"
                         >
                           View
                         </Button>
@@ -264,35 +265,35 @@ const Inventory = () => {
 {!collapsedSections[type] && (
                   <>
                     {/* Mobile Grid View */}
-                    <div className="grid grid-cols-2 gap-4 p-4 md:hidden">
+<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 md:hidden">
                       {typeComponents.map((component) => (
-<div key={component.Id} className="bg-white border border-gray-200 rounded-lg p-3 sm:p-4 space-y-2 sm:space-y-3 aspect-square sm:aspect-auto flex flex-col justify-between">
-                          <div className="space-y-2 flex-1">
-                            <div className="font-medium text-gray-900 text-xs sm:text-sm leading-tight line-clamp-2">{component.name}</div>
+<div key={component.Id} className="bg-white border border-gray-200 rounded-lg p-4 sm:p-5 space-y-3 min-h-[200px] flex flex-col justify-between">
+                          <div className="space-y-3 flex-1">
+                            <div className="font-medium text-gray-900 text-sm sm:text-base leading-tight line-clamp-2">{component.name}</div>
                             
-                            <div className="space-y-1 sm:space-y-2">
-                              <div className="text-xs text-gray-500">Quantity</div>
+                            <div className="space-y-2">
+                              <div className="text-xs sm:text-sm text-gray-500">Quantity</div>
                               <Input
                                 type="number"
                                 value={component.quantity}
                                 onChange={(e) => handleStockUpdate(component.Id, e.target.value, "component")}
-                                className="w-full h-7 sm:h-8 text-xs sm:text-sm"
+                                className="w-full min-h-[44px] text-sm"
                                 min="0"
                               />
                             </div>
                             
                             <div className="space-y-1">
-                              <div className="text-xs text-gray-500">Reorder Level</div>
-                              <div className="text-xs sm:text-sm text-gray-900">{component.reorderLevel}</div>
+                              <div className="text-xs sm:text-sm text-gray-500">Reorder Level</div>
+                              <div className="text-sm sm:text-base text-gray-900">{component.reorderLevel}</div>
                             </div>
                             
                             <div className="space-y-1">
-                              <div className="text-xs text-gray-500">Cost per Unit</div>
-                              <div className="text-xs sm:text-sm text-gray-900">${component.costPerUnit?.toFixed(2)}</div>
+                              <div className="text-xs sm:text-sm text-gray-500">Cost per Unit</div>
+                              <div className="text-sm sm:text-base text-gray-900">${component.costPerUnit?.toFixed(2)}</div>
                             </div>
                           </div>
                           
-                          <div className="pt-1 mt-auto">
+                          <div className="pt-2 mt-auto">
                             <StockBadge stock={component.quantity} reorderLevel={component.reorderLevel} />
                           </div>
                         </div>
@@ -300,23 +301,23 @@ const Inventory = () => {
                     </div>
                     
                     {/* Desktop Table View */}
-                    <div className="overflow-x-auto hidden md:block">
+<div className="overflow-x-auto hidden md:block">
                       <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                           <tr>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                               Component
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                               Quantity
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                               Reorder Level
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                               Cost per Unit
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                               Status
                             </th>
                           </tr>
@@ -324,25 +325,25 @@ const Inventory = () => {
                         <tbody className="bg-white divide-y divide-gray-200">
                           {typeComponents.map((component) => (
                             <tr key={component.Id} className="hover:bg-gray-50">
-                              <td className="px-6 py-4 whitespace-nowrap">
-                                <div className="font-medium text-gray-900">{component.name}</div>
+                              <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
+                                <div className="font-medium text-gray-900 text-sm sm:text-base">{component.name}</div>
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
+                              <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                                 <Input
                                   type="number"
                                   value={component.quantity}
                                   onChange={(e) => handleStockUpdate(component.Id, e.target.value, "component")}
-                                  className="w-20"
+                                  className="w-20 sm:w-24 min-h-[44px]"
                                   min="0"
                                 />
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                              <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-gray-900 text-sm sm:text-base">
                                 {component.reorderLevel}
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap text-gray-900">
+                              <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-gray-900 text-sm sm:text-base">
                                 ${component.costPerUnit?.toFixed(2)}
                               </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
+                              <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
                                 <StockBadge stock={component.quantity} reorderLevel={component.reorderLevel} />
                               </td>
                             </tr>

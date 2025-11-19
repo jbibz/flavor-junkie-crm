@@ -26,7 +26,7 @@ const SearchBar = ({ onSearch, placeholder = "Search...", className = "" }) => {
         value={searchTerm}
         onChange={handleSearch}
         placeholder={placeholder}
-        className="pl-9 pr-9"
+className="pl-10 pr-10 py-3 min-h-[44px] text-base"
       />
       {searchTerm && (
         <button

@@ -87,16 +87,16 @@ const Dashboard = () => {
   return (
     <div className="space-y-8">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
-            Dashboard
+<div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="text-center sm:text-left">
+          <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
+            Production Dashboard
           </h1>
-          <p className="mt-2 text-gray-600">
-            Welcome to your Flavor Junkie CRM. Here's your business overview.
+          <p className="mt-2 text-gray-600 text-sm sm:text-base">
+            Monitor your seasoning production metrics and inventory levels.
           </p>
         </div>
-        <div className="mt-4 sm:mt-0 flex space-x-3">
+        <div className="flex flex-wrap justify-center sm:justify-end gap-2">
           <Button onClick={() => handleQuickAction("sales")} icon="Plus">
             Add Sale
           </Button>
@@ -107,7 +107,7 @@ const Dashboard = () => {
       </div>
 
       {/* Metrics Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <MetricCard
           title="Total Revenue"
           value={metrics.totalRevenue.toLocaleString()}
@@ -138,7 +138,7 @@ const Dashboard = () => {
       {/* Quick Actions */}
       <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
 <Button
             variant="ghost"
             onClick={() => handleQuickAction("inventory")}
@@ -175,7 +175,7 @@ const Dashboard = () => {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid lg:grid-cols-3 gap-8">
+<div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
         {/* Inventory Overview */}
 <div className="lg:col-span-2 space-y-6">
           <div className="flex items-center justify-between">
@@ -189,12 +189,12 @@ const Dashboard = () => {
               View All
             </Button>
           </div>
-<div className="grid grid-cols-4 gap-3 md:gap-6">
+<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {products.map((product) => (
-              <div key={product.Id} className="bg-white rounded-2xl p-3 md:p-6 shadow-sm border border-gray-100 flex flex-col items-center justify-between min-h-[200px] md:min-h-[280px]">
-                <h3 className="text-sm md:text-base font-bold text-gray-900 text-center mb-2 md:mb-4">{product.name}</h3>
-                <div className="text-3xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-4">{product.currentStock}</div>
-                <div className={`px-2 md:px-4 py-1 md:py-2 rounded-full text-xs md:text-sm font-medium ${
+              <div key={product.Id} className="bg-white rounded-2xl p-4 md:p-6 shadow-sm border border-gray-100 flex flex-col items-center justify-between min-h-[180px] sm:min-h-[220px] md:min-h-[280px]">
+                <h3 className="text-sm md:text-base font-bold text-gray-900 text-center mb-3 md:mb-4 leading-tight">{product.name}</h3>
+                <div className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-3 md:mb-4">{product.currentStock}</div>
+                <div className={`px-3 md:px-4 py-2 md:py-2 rounded-full text-xs sm:text-sm font-medium ${
                   product.currentStock <= 10 
                     ? 'bg-red-100 text-red-800' 
                     : product.currentStock <= 20 
