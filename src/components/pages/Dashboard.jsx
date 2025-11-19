@@ -139,37 +139,37 @@ const Dashboard = () => {
       <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <Button
+<Button
             variant="ghost"
             onClick={() => handleQuickAction("inventory")}
-            className="h-auto p-4 flex-col space-y-2"
+            className="h-24 p-3 flex-col justify-center items-center gap-2 min-w-0"
             icon="Package"
           >
-            <span>Manage Inventory</span>
+            <span className="text-xs text-center leading-tight">Manage Inventory</span>
           </Button>
-          <Button
+<Button
             variant="ghost"
             onClick={() => handleQuickAction("sales")}
-            className="h-auto p-4 flex-col space-y-2"
+            className="h-24 p-3 flex-col justify-center items-center gap-2 min-w-0"
             icon="ShoppingCart"
           >
-            <span>Record Sales</span>
+            <span className="text-xs text-center leading-tight">Record Sales</span>
           </Button>
-          <Button
+<Button
             variant="ghost"
             onClick={() => handleQuickAction("analytics")}
-            className="h-auto p-4 flex-col space-y-2"
+            className="h-24 p-3 flex-col justify-center items-center gap-2 min-w-0"
             icon="BarChart3"
           >
-            <span>View Analytics</span>
+            <span className="text-xs text-center leading-tight">View Analytics</span>
           </Button>
-          <Button
+<Button
             variant="ghost"
             onClick={() => handleQuickAction("production")}
-            className="h-auto p-4 flex-col space-y-2"
+            className="h-24 p-3 flex-col justify-center items-center gap-2 min-w-0"
             icon="Factory"
           >
-            <span>Track Production</span>
+            <span className="text-xs text-center leading-tight">Track Production</span>
           </Button>
         </div>
       </div>

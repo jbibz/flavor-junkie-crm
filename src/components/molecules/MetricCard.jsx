@@ -24,11 +24,11 @@ const MetricCard = ({
   };
 
   return (
-    <Card className={`p-6 ${className}`}>
-      <div className="flex items-center justify-between">
-        <div className="space-y-1">
-          <p className="text-sm text-gray-600 font-medium">{title}</p>
-          <p className="text-2xl font-bold text-gray-900">
+<Card className={`p-4 ${className}`}>
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex-1 min-w-0 space-y-1">
+          <p className="text-sm text-gray-600 font-medium truncate">{title}</p>
+          <p className="text-xl font-bold text-gray-900 break-words">
             {prefix}{value}{suffix}
           </p>
           {change !== undefined && (
@@ -39,8 +39,8 @@ const MetricCard = ({
           )}
         </div>
         {icon && (
-          <div className="p-3 bg-gradient-to-br from-amber-100 to-orange-100 rounded-full">
-            <ApperIcon name={icon} className="w-6 h-6 text-amber-600" />
+          <div className="p-2 bg-gradient-to-br from-amber-100 to-orange-100 rounded-full flex-shrink-0">
+            <ApperIcon name={icon} className="w-5 h-5 text-amber-600" />
           </div>
         )}
       </div>
