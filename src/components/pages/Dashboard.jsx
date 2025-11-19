@@ -177,7 +177,7 @@ const Dashboard = () => {
       {/* Main Content Grid */}
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Inventory Overview */}
-        <div className="lg:col-span-2 space-y-6">
+<div className="lg:col-span-2 space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-xl font-semibold text-gray-900">Inventory Overview</h2>
             <Button 
@@ -189,7 +189,15 @@ const Dashboard = () => {
               View All
             </Button>
           </div>
-          <InventoryGrid products={products} loading={false} error="" />
+          <div className="flex justify-center">
+            <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 w-64 h-80 flex flex-col items-center justify-between">
+              <h3 className="text-lg font-bold text-gray-900 text-center">BBQ Blend</h3>
+              <div className="text-6xl font-bold text-gray-900">56</div>
+              <div className="bg-green-100 text-gray-900 px-4 py-2 rounded-full text-sm font-medium">
+                in stock
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Notes Editor */}
