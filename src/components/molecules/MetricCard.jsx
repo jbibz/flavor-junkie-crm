@@ -1,5 +1,6 @@
-import Card from "@/components/atoms/Card";
+import React from "react";
 import ApperIcon from "@/components/ApperIcon";
+import Card from "@/components/atoms/Card";
 
 const MetricCard = ({ 
   title, 
@@ -23,16 +24,16 @@ const MetricCard = ({
     return "Minus";
   };
 
-  return (
-<Card className={`p-4 ${className}`}>
-      <div className="flex items-start justify-between gap-3">
+return (
+    <Card className={`p-4 ${className}`}>
+      <div className="flex items-start gap-3">
         <div className="flex-1 min-w-0 space-y-1">
-          <p className="text-sm text-gray-600 font-medium truncate">{title}</p>
-          <p className="text-xl font-bold text-gray-900 break-words">
+          <p className="text-sm text-gray-600 font-medium text-center">{title}</p>
+          <p className="text-xl font-bold text-gray-900 text-center break-words">
             {prefix}{value}{suffix}
           </p>
           {change !== undefined && (
-            <div className={`flex items-center gap-1 text-sm ${getChangeColor()}`}>
+            <div className={`flex items-center justify-center gap-1 text-sm ${getChangeColor()}`}>
               <ApperIcon name={getChangeIcon()} size={14} />
               {Math.abs(change)}%
             </div>
