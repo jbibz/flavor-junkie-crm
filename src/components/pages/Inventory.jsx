@@ -266,31 +266,33 @@ const Inventory = () => {
                     {/* Mobile Grid View */}
                     <div className="grid grid-cols-2 gap-4 p-4 md:hidden">
                       {typeComponents.map((component) => (
-                        <div key={component.Id} className="bg-white border border-gray-200 rounded-lg p-4 space-y-3">
-                          <div className="font-medium text-gray-900 text-sm leading-tight">{component.name}</div>
-                          
-                          <div className="space-y-2">
-                            <div className="text-xs text-gray-500">Quantity</div>
-                            <Input
-                              type="number"
-                              value={component.quantity}
-                              onChange={(e) => handleStockUpdate(component.Id, e.target.value, "component")}
-                              className="w-full h-8 text-sm"
-                              min="0"
-                            />
+<div key={component.Id} className="bg-white border border-gray-200 rounded-lg p-3 sm:p-4 space-y-2 sm:space-y-3 aspect-square sm:aspect-auto flex flex-col justify-between">
+                          <div className="space-y-2 flex-1">
+                            <div className="font-medium text-gray-900 text-xs sm:text-sm leading-tight line-clamp-2">{component.name}</div>
+                            
+                            <div className="space-y-1 sm:space-y-2">
+                              <div className="text-xs text-gray-500">Quantity</div>
+                              <Input
+                                type="number"
+                                value={component.quantity}
+                                onChange={(e) => handleStockUpdate(component.Id, e.target.value, "component")}
+                                className="w-full h-7 sm:h-8 text-xs sm:text-sm"
+                                min="0"
+                              />
+                            </div>
+                            
+                            <div className="space-y-1">
+                              <div className="text-xs text-gray-500">Reorder Level</div>
+                              <div className="text-xs sm:text-sm text-gray-900">{component.reorderLevel}</div>
+                            </div>
+                            
+                            <div className="space-y-1">
+                              <div className="text-xs text-gray-500">Cost per Unit</div>
+                              <div className="text-xs sm:text-sm text-gray-900">${component.costPerUnit?.toFixed(2)}</div>
+                            </div>
                           </div>
                           
-                          <div className="space-y-1">
-                            <div className="text-xs text-gray-500">Reorder Level</div>
-                            <div className="text-sm text-gray-900">{component.reorderLevel}</div>
-                          </div>
-                          
-                          <div className="space-y-1">
-                            <div className="text-xs text-gray-500">Cost per Unit</div>
-                            <div className="text-sm text-gray-900">${component.costPerUnit?.toFixed(2)}</div>
-                          </div>
-                          
-                          <div className="pt-1">
+                          <div className="pt-1 mt-auto">
                             <StockBadge stock={component.quantity} reorderLevel={component.reorderLevel} />
                           </div>
                         </div>
