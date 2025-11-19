@@ -2,10 +2,10 @@ import ProductCard from "@/components/molecules/ProductCard";
 import Empty from "@/components/ui/Empty";
 
 const InventoryGrid = ({ products, loading, error }) => {
-  if (loading) {
+if (loading) {
     return (
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        {[...Array(8)].map((_, index) => (
+      <div className="grid grid-cols-1 grid-rows-3 gap-4">
+        {[...Array(3)].map((_, index) => (
           <div key={index} className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 animate-pulse">
             <div className="space-y-3">
               <div className="h-4 bg-gray-200 rounded w-3/4"></div>
@@ -35,10 +35,9 @@ const InventoryGrid = ({ products, loading, error }) => {
       />
     );
   }
-
-  return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-      {products.map((product) => (
+return (
+    <div className="grid grid-cols-1 grid-rows-3 gap-4">
+      {products.slice(0, 3).map((product) => (
         <ProductCard key={product.Id} product={product} />
       ))}
     </div>
