@@ -1,18 +1,18 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { productService } from "@/services/api/productService";
+import { componentService } from "@/services/api/componentService";
+import ApperIcon from "@/components/ApperIcon";
+import StockBadge from "@/components/molecules/StockBadge";
+import SearchBar from "@/components/molecules/SearchBar";
+import Loading from "@/components/ui/Loading";
+import Empty from "@/components/ui/Empty";
+import ErrorView from "@/components/ui/ErrorView";
 import Button from "@/components/atoms/Button";
 import Card from "@/components/atoms/Card";
 import Input from "@/components/atoms/Input";
-import SearchBar from "@/components/molecules/SearchBar";
-import StockBadge from "@/components/molecules/StockBadge";
-import Loading from "@/components/ui/Loading";
-import ErrorView from "@/components/ui/ErrorView";
-import Empty from "@/components/ui/Empty";
-import ApperIcon from "@/components/ApperIcon";
-import { productService } from "@/services/api/productService";
-import { componentService } from "@/services/api/componentService";
-
+import Label from "@/components/atoms/Label";
 const Inventory = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("products");
@@ -179,49 +179,42 @@ const Inventory = () => {
               icon="Package"
             />
           ) : (
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Product
-                    </th>
-                    <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Current Stock
-                    </th>
-                    <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Status
-                    </th>
-                    <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Unit Price
-                    </th>
-                    <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Actions
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {filteredProducts.map((product) => (
-                    <tr key={product.Id} className="hover:bg-gray-50">
-                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
-                        <div className="font-medium text-gray-900 text-sm sm:text-base">{product.name}</div>
-                      </td>
-                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
-                        <Input
-                          type="number"
-                          value={product.currentStock}
-                          onChange={(e) => handleStockUpdate(product.Id, e.target.value)}
-                          className="w-20 sm:w-24 min-h-[44px]"
-                          min="0"
-                        />
-                      </td>
-                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
+            <>
+              {/* Mobile Card Layout */}
+              <div className="block sm:hidden space-y-4 p-4">
+                {filteredProducts.map((product) => (
+                  <Card key={product.Id} className="p-4 bg-white shadow-sm border border-gray-200">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <h3 className="font-medium text-gray-900 text-base">{product.name}</h3>
                         <StockBadge stock={product.currentStock} />
-                      </td>
-                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-gray-900 text-sm sm:text-base">
-                        ${product.pricePerUnit?.toFixed(2)}
-                      </td>
-                      <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
+                      </div>
+                      
+                      <div className="grid grid-cols-2 gap-4">
+                        <div>
+                          <Label className="text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Current Stock
+                          </Label>
+                          <Input
+                            type="number"
+                            value={product.currentStock}
+                            onChange={(e) => handleStockUpdate(product.Id, e.target.value)}
+                            className="mt-1 min-h-[44px]"
+                            min="0"
+                          />
+                        </div>
+                        
+                        <div>
+                          <Label className="text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Unit Price
+                          </Label>
+                          <div className="mt-1 text-gray-900 text-base font-medium flex items-center h-[44px]">
+                            ${product.pricePerUnit?.toFixed(2)}
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="flex justify-end">
                         <Button
                           variant="ghost"
                           size="sm"
@@ -229,14 +222,74 @@ const Inventory = () => {
                           icon="Eye"
                           className="min-h-[44px]"
                         >
-                          View
+                          View Details
                         </Button>
-                      </td>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Desktop Table Layout */}
+              <div className="hidden sm:block overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Product
+                      </th>
+                      <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Current Stock
+                      </th>
+                      <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Status
+                      </th>
+                      <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Unit Price
+                      </th>
+                      <th className="px-4 sm:px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Actions
+                      </th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {filteredProducts.map((product) => (
+                      <tr key={product.Id} className="hover:bg-gray-50">
+                        <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
+                          <div className="font-medium text-gray-900 text-sm sm:text-base">{product.name}</div>
+                        </td>
+                        <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
+                          <Input
+                            type="number"
+                            value={product.currentStock}
+                            onChange={(e) => handleStockUpdate(product.Id, e.target.value)}
+                            className="w-20 sm:w-24 min-h-[44px]"
+                            min="0"
+                          />
+                        </td>
+                        <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
+                          <StockBadge stock={product.currentStock} />
+                        </td>
+                        <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-gray-900 text-sm sm:text-base">
+                          ${product.pricePerUnit?.toFixed(2)}
+                        </td>
+                        <td className="px-4 sm:px-6 py-4 whitespace-nowrap">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleProductClick(product.Id)}
+                            icon="Eye"
+                            className="min-h-[44px]"
+                          >
+                            View
+                          </Button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
           )}
         </Card>
       ) : (
