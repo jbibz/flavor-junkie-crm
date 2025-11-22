@@ -18,14 +18,14 @@ const BottomNavigation = () => {
     if (href === "/") return location.pathname === "/";
     return location.pathname.startsWith(href);
   };
-  return (
+return (
     <motion.nav
       initial={{ y: 100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", damping: 20, stiffness: 200 }}
-className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 lg:hidden z-50 safe-area-pb"
+      className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 lg:hidden z-40 safe-area-pb"
     >
-<div className="flex items-center justify-around px-2 py-4">
+      <div className="flex items-center justify-around px-2 py-4">
         {navigation.map((item) => {
           const active = isActive(item.href);
           
@@ -36,9 +36,9 @@ className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 lg:hi
                 to={item.href}
 className="flex flex-col items-center justify-center relative -mt-6"
               >
-<button
+                <button
                   onClick={() => navigate(item.href)}
-                  className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg border-3 border-white transition-all duration-200 ${
+                  className={`w-16 h-16 rounded-full flex items-center justify-center shadow-lg border-4 border-white transition-all duration-200 ${
                     active
                       ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white"
                       : "bg-gradient-to-r from-amber-500 to-orange-500 text-white"
@@ -61,7 +61,7 @@ className="flex flex-col items-center justify-center relative -mt-6"
               to={item.href}
 className="flex flex-col items-center justify-center min-w-0 flex-1 py-2 px-1"
             >
-<button
+              <button
                 onClick={() => navigate(item.href)}
                 className={`flex flex-col items-center justify-center min-w-0 p-3 rounded-lg transition-colors duration-200 min-h-[44px] ${
                   active
